@@ -3,6 +3,13 @@ import {Container} from "react-bootstrap";
 import {Route, Routes} from "react-router-dom";
 import Main from "./Main";
 import FooterComponent from "./FooterComponent";
+import About from "./About";
+import FAQ from "./FAQ";
+import Portfolio from "./Portfolio";
+import Service from "./Service";
+import Contact from "./Contact";
+
+
 
 const UserApp = () => {
 
@@ -15,8 +22,11 @@ const UserApp = () => {
                 <Routes >
 
                     <Route exact path='/'  element={<Main />}  />
-
-
+                    <Route exact path='/about'  element={<About />}  />
+                    <Route exact path='/faq'  element={<FAQ />}  />
+                    <Route path='/portfolio' element={<Portfolio/>} />
+                    <Route path='/services' element={<Service />} />
+                    <Route path='/contact' element={<Contact />} />
                 </Routes>
             </Container>
 
