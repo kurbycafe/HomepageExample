@@ -107,16 +107,12 @@ const Main = () => {
 
             </div>
 
-            //googlemap of location
 <iframe
                 width="100%"
                 height="300"
-                frameBorder="0"
-                scrolling="no"
-                marginHeight="0"
-                marginWidth="0"
                 src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Berlin+(Maler%20%26%20Lackiere)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-            ></iframe>
+className="mt-5"
+/>
             <div className="text-center mt-5">
                 <h2>Kontaktieren Sie uns</h2>
                 <p>Wir freuen uns, von Ihnen zu hören!</p>

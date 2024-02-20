@@ -8,6 +8,7 @@ import FAQ from "./FAQ";
 import Portfolio from "./Portfolio";
 import Service from "./Service";
 import Contact from "./Contact";
+import Reservation from "./Reservation";
 
 
 
@@ -26,6 +27,7 @@ const UserApp = () => {
                     <Route exact path='/faq'  element={<FAQ />}  />
                     <Route path='/portfolio' element={<Portfolio/>} />
                     <Route path='/services' element={<Service />} />
+                    <Route path='/reservation' element={<Reservation />} />
                     <Route path='/contact' element={<Contact />} />
                 </Routes>
             </Container>

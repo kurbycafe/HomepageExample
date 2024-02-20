@@ -15,7 +15,7 @@ const HeaderComponent = () => {
                         <Nav.Link href="/about">Über uns</Nav.Link>
                         <Nav.Link href="/services">Dienstleistungen</Nav.Link>
                         <Nav.Link href="/portfolio">Portfolio</Nav.Link>
-                        <Nav.Link href="/quote">Angebot & Reservierung</Nav.Link>
+                        <Nav.Link href="/reservation">Reservierung</Nav.Link>
                         <Nav.Link href="/faq">FAQ</Nav.Link>
 
                         <Nav.Link href="/contact">Kontakt</Nav.Link>
