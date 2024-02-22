@@ -7,7 +7,7 @@ function ImageWithButton() {
     return (
 
         <div style={{marginTop : "300px", position: 'relative', display: 'inline-block' }}>
-            <img src="https://via.placeholder.com/1600x400" alt="Your Image" style={{ width: '100%' }} />
+            <img src="/contact-us.jpg" alt="Your Image" style={{ width: '100%' }} />
             <Button variant="primary" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.5)', color: '#000', border: 'none' }}>
                 Contact us
             </Button>
@@ -31,9 +31,10 @@ const About = () => {
                     <p>
                         <h2> About me</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl
-                            tempus
-                            convallis quis ac lectus. Nulla quis
+                            Ich bin ein professioneller Maler und Lackierer mit 25 Jahren Erfahrung in der Branche.
+                        </p>
+                        <p>
+                            Ich bin der kompetente Partner für Ihre Maler- und Lackierarbeiten und stehe Ihnen mit Rat und Tat zur Seite.
                         </p>
                     </p>
                 </div>
@@ -97,17 +98,20 @@ const About = () => {
                     <p>
                         <h2> About company</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non nulla sit amet nisl
-                            tempus
-                            convallis quis ac lectus. Nulla quis
+                            Wir sind ein Unternehmen, das professionelle Maler- und Lackierdienste anbietet.
+                            Wir bieten unseren Kunden qualitativ hochwertige Dienstleistungen und führen professionelle Maler- und Lackierarbeiten im Innen- und Außenbereich von Gebäuden durch.
+                            Unsere Experten verwenden modernste Technologien und hochwertige Materialien, um die Anforderungen unserer Kunden zu erfüllen und schöne Ergebnisse zu erzielen.
+                            Wir helfen Ihnen gerne dabei,
+                            Ihr Gebäude in ein wunderschönes Kunstwerk zu verwandeln.
                         </p>
                     </p>
                 </div>
                 <div>
 
                     <Image
-                        src="https://via.placeholder.com/400x600"
-
+                        /*src="https://via.placeholder.com/400x600"*/
+                        src="/about-company.jpg"
+                        style={{width: "400px", height: "600px"}}
                     />
 
                 </div>
