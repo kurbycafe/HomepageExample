@@ -29,7 +29,7 @@ const UserApp = () => {
                     <Route path='/portfolio' element={<Portfolio/>} />
                     <Route path='/services' element={<Service />} />
                     <Route path='/reservation' element={<Reservation />} />
-                    <Route path='/reservation/apply' element={<ReservationDetail />} />
+                    <Route path='/reservation/apply/' element={<ReservationDetail />} />
                     <Route path='/contact' element={<Contact />} />
                 </Routes>
             </Container>

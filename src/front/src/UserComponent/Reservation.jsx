@@ -6,32 +6,70 @@ import "./calendar-custom.css"
 import {Button, Table} from "react-bootstrap";
 
 import axios from "axios";
+import service from "./Service";
 function Reservation() {
-    const [dateState, setDateState] = useState(new Date())
 
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState('');
-    const [value, onChange] = useState(new Date())
+
 
     const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 
+    /**
+     * get current time(CET) from server
+     * @returns current time (format : dd-MM-yyyy HH:mm:ss)
+     * @returns  current day of week in German (format : EEEE)
+     * @returns availableTimeSlots
+     * @param date
+     */
+    const getAvailableTimeSlots = (date) => {
+        let resDate = null;
+
+        if(date !== undefined){
+            resDate = date
+
+        }
+
+
+        axios.post('/api/getReservationInfo', {
+            resDate: resDate
+        })
+            .then(response => {
+
+                    console.log('서버 시간 full: ', response.data.srvDateTime);
+                    console.log('서버 시간', response.data.srvDate)
+                    console.log('user selected date:', response.data.usrDateTime);
+
+                    setAvailableTimeSlots(response.data.timeSlotList);
+
+                }
+            );
+    }
+
+
     useEffect(() => {
-        // 여기에서 초기화 로직을 작성합니다.
-        // 예를 들어, 처음에 선택한 날짜에 따라 가능한 시간대를 설정할 수 있습니다.
-        const timeSlots = getAvailableTimeSlots(selectedDate);
-        setAvailableTimeSlots(timeSlots);
+        getAvailableTimeSlots();
     }, []);
+
+    /*
+    * function to change date on calendar
+    * */
     const changeDate = date => {
 
-        setSelectedDate(date);
-        // 여기에서 선택한 날짜에 따라 가능한 시간대를 설정합니다.
-        const timeSlots = getAvailableTimeSlots(date);
-        setAvailableTimeSlots(timeSlots);
+        console.log("selected date: "+date);
+        getAvailableTimeSlots(date);
+
     };
 
+    /*
+    * time selector
+    * */
     const ClickSelect = (e) => {
 
-        setSelectedTime(e.target.id);
+        /*setSelectedTime(e.target.id);
+
+        //request to server to get reservation list
+
 
         let selected = document.querySelector(".selected");
         if (selected) {
@@ -43,21 +81,13 @@ function Reservation() {
         e.target.classList.add("selected");
     //css added to selected class
         e.target.style.backgroundColor = "lightblue";
-
+*/
 
 
     }
 
-    const getAvailableTimeSlots = (date) => {
-        return [
 
-            //time list as json
 
-            '9:00', '10:00', '11:00',
-            '12:00', '13:00', '14:00',
-            '15:00', '16:00', '17:00',
-        ];
-    };
 
 
     const reserve = () => {
@@ -79,22 +109,15 @@ function Reservation() {
             return;
         }
 
-        axios.post('/reservation/apply', {
-            date: formattedDate,
-            time: selectedTime
-        }
-        ).then(response => {
-            if (response.data.success) {
-                alert("Reservation is successful");
-            } else {
-                alert("Reservation is failed");
-            }
-        }
-        );
 
+
+        const formData = new FormData();
+
+        formData.append("resDate" , formattedDate);
+        formData.append("resTime", selectedTime);
 
         //move to reservation page
-        window.location.href = "/reservation/apply?date=" + formattedDate + "&time=" + selectedTime;
+        window.location.href = "/reservation/apply?resDate=" + formattedDate + "&resTime=" + selectedTime;
     }
 
 
@@ -102,12 +125,19 @@ function Reservation() {
         <>
             <h1 className="mt-5 mb-4">Reservierung</h1>
 
-
+           {/* {reservationList.map(reservation => (
+                <li key={reservation.id}>
+                    <p>Reservation ID: {reservation.resDate}</p>
+                    <p>Reservation Time: {reservation.resTime}</p>
+                     restime 변수에 접근하여 사용
+                     예약 정보의 나머지 부분도 필요에 따라 출력
+                </li>
+            ))}*/}
 
             <div className="d-flex align-items-center justify-content-center " style={{minHeight: "70vh"}}>
 
                 <Calendar
-                    onChange={onChange} value={value}
+
                     className="w-75 p-5"
                     locale={"de-DE"}
                     onClickDay={changeDate}
@@ -120,6 +150,7 @@ function Reservation() {
 
                     <tbody>
                     {availableTimeSlots.map((timeSlot, index) => (
+
                         <tr key={index} onClick={ClickSelect}>
                             <td id={index+9}>{timeSlot}</td>
                         </tr>
