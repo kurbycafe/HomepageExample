@@ -8,7 +8,7 @@ function ImageWithButton() {
 
         <div style={{marginTop : "300px", position: 'relative', display: 'inline-block' }}>
             <img src="/contact-us.jpg" alt="Your Image" style={{ width: '100%' }} />
-            <Button variant="primary" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.5)', color: '#000', border: 'none' }}>
+            <Button href="/contact" variant="primary" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 255, 255, 0.5)', color: '#000', border: 'none' }}>
                 Contact us
             </Button>
         </div>

@@ -29,6 +29,10 @@ const Contact = () => {
                       </Form.Group>
                   </Col>
               </Row>
+              <Form.Group className="mb-3">
+                  <Form.Label>Titel</Form.Label>
+                  <Form.Control type="text" placeholder="Titel" />
+              </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Content</Form.Label>
                     <Form.Control as="textarea" rows={10} />

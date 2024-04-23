@@ -17,7 +17,7 @@ const HeaderComponent = () => {
                         <Nav.Link href="/about" className="fs-4" >Über uns</Nav.Link>
                         <Nav.Link href="/services" className="fs-4">Dienstleistungen</Nav.Link>
                         <Nav.Link href="/portfolio" className="fs-4">Portfolio</Nav.Link>
-                        <Nav.Link href="/reservation" className="fs-4">Reservierung</Nav.Link>
+                       {/* <Nav.Link href="/reservation" className="fs-4">Reservierung</Nav.Link>*/}
                         <Nav.Link href="/faq" className="fs-4">FAQ</Nav.Link>
 
                         <Nav.Link href="/contact" className="fs-4">Kontakt</Nav.Link>
