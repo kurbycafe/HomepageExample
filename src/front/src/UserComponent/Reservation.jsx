@@ -23,16 +23,11 @@ function Reservation() {
      * @param date
      */
     const getAvailableTimeSlots = (date) => {
-        let resDate = null;
 
-        if(date !== undefined){
-            resDate = date
-
-        }
 
 
         axios.post('/api/getReservationInfo', {
-            resDate: resDate
+            resDate: date
         })
             .then(response => {
 
@@ -48,15 +43,15 @@ function Reservation() {
 
 
     useEffect(() => {
-        getAvailableTimeSlots();
+
+        getAvailableTimeSlots(selectedDate);
     }, []);
 
     /*
     * function to change date on calendar
     * */
     const changeDate = date => {
-
-        console.log("selected date: "+date);
+        setSelectedDate(date);
         getAvailableTimeSlots(date);
 
     };

@@ -56,11 +56,6 @@ public class ReservationController {
     @PostMapping("/api/getReservationInfo")
     public Map<String, Object> getReservationInfo(@RequestBody ReservationEntity res) {
 
-        System.err.println(res.getResDate());
-        //여기에 서버&클라이언트간 시차 계산해서 보여주기
-        //서버 시간은 CET로 통일
-        //클라이언트 시간은 사용자의 로컬 시간으로 통일
-
 
 
         //CET time generate
@@ -84,15 +79,12 @@ public class ReservationController {
 
         SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
         isoFormat.setTimeZone(TimeZone.getTimeZone("CET"));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         String usrDateTime = null;
         String  usrDate = null;
 
-        if(res.getResDate() == null) {
-            usrDate = srvDate;
-        }
-        else{
+
             try {
 
 
@@ -107,14 +99,13 @@ public class ReservationController {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        }
+
 
 
 
 
         //remove the time slot that is already reserved
         List<String> timeSlotListResultList = reservationService.getReservationListByDate(usrDate);
-        System.err.println("timeSlotListResultList: " + timeSlotListResultList);
         timeSlotList.removeAll(timeSlotListResultList);
 
         System.err.println("usrResDate: " + res.getResDate());

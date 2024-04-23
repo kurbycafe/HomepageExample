@@ -13,7 +13,7 @@ import java.util.Objects;
 @Getter
 @Entity
 @ToString
-@Table(name = "RESERVATION", schema = "Franzoimaler")
+@Table(name = "RESERVATION", schema = "franzoimaler")
 public class ReservationEntity {
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
